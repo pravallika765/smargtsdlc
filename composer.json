@@ -1,0 +1,80 @@
+{
+    "name": "betterde/sdlc",
+    "description": "Software Development Life Cycle",
+    "keywords": ["sdlc", "pm", "php", "life-cycle"],
+    "homepage": "https://sdlc.betterde.com",
+    "version": "1.0.1",
+    "license": "MIT",
+    "type": "project",
+    "authors": [
+        {
+            "name": "George",
+            "email": "george@betterde.com",
+            "homepage": "https://sdlc.betterde.com"
+        }
+    ],
+    "support": {
+        "email": "george@betterde.com",
+        "issues": "https://github.com/betterde/sdlc/issues/new",
+        "docs": "https://sdlc.betterde.com/documents"
+    },
+    "require": {
+        "php": "^7.1.3",
+        "ext-json": "*",
+        "ext-sockets": "*",
+        "betterde/comment": "^2.0",
+        "betterde/response": "^1.2",
+        "fideloper/proxy": "^4.0",
+        "fruitcake/laravel-cors": "^1.0",
+        "guzzlehttp/guzzle": "^6.3",
+        "laravel/framework": "^7.0",
+        "laravel/tinker": "^2.0",
+        "predis/predis": "^1.1",
+        "tymon/jwt-auth": "^1.0"
+    },
+    "require-dev": {
+        "fzaninotto/faker": "^1.9.1",
+        "mockery/mockery": "^1.3.1",
+        "nunomaduro/collision": "^4.1",
+        "phpunit/phpunit": "^8.5"
+    },
+    "autoload": {
+        "classmap": [
+            "database/seeds",
+            "database/factories"
+        ],
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": [
+            ]
+        }
+    },
+    "scripts": {
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate"
+        ],
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover"
+        ]
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
